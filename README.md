@@ -3,7 +3,7 @@
 
 Created by:
 
-Bryan Burkhardt (bmburkhardt@alaska.edu)
+Bryan Burkhardt (bmburkhardt@alaska.edu)  
 Alexander Eckert (aeckert@alaska.edu)
 
 Project 1 for CS372 Spring 2017 at UAF
