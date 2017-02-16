@@ -1,21 +1,21 @@
 #include <SFML/Graphics.hpp>
 
-#include "../incude/gameStateMenu.hpp"
+#include "../include/gameStateMenu.hpp"
 #include "../include/gameStatePlay.hpp"
 #include "../include/gameState.hpp"
 
-void gameStateMenu::draw(const float dt) {
+void GameStateMenu::draw(const float dt) {
 	this->game->window.setView(this->view);
 
 	this->game->window.clear(sf::Color::Black);
-	this->game->window.draw(this->game->background);
+	//this->game->window.draw(this->game->background);
 
 	return;
 }
 
-void gameStateMenu::update(const float dt) {}
+void GameStateMenu::update(const float dt) {}
 
-void gameStateMenu::handleInput() {
+void GameStateMenu::handleInput() {
 	sf::Event event;
 
 	while(this->game->window.pollEvent(event)) {
@@ -32,7 +32,7 @@ void gameStateMenu::handleInput() {
 			case sf::Event::KeyPressed: {
 				if(event.key.code == sf::Keyboard::Escape) 
 					this->game->window.close();
-				else if(event.key.code == sf::Keyboard::Enter) 
+				else if(event.key.code == sf::Keyboard::Return) 
 					this->loadgame();
 				break;
 			}
@@ -45,14 +45,14 @@ void gameStateMenu::handleInput() {
 
 GameStateMenu::GameStateMenu(Game* game) {
 	this->game = game;
-	sf::Vector2f pos = sf::Vector2f(this->window.getSize());
+	sf::Vector2f pos = sf::Vector2f(this->game->window.getSize());
 	this->view.setSize(pos);
-	pos * = 0.5f;
+	pos *= 0.5f;
 	this->view.setCenter(pos);
 }
 
 void GameStateMenu::loadgame() {
-	this->game->pushState(new gameStatePlay(this->game));
+	this->game->pushState(new GameStatePlay(this->game));
 	return;
 }
 

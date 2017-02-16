@@ -3,19 +3,19 @@
 #include "../include/gameStatePlay.hpp"
 #include "../include/gameState.hpp"
 
-void gameStateMenu::draw(const float dt) {
+void GameStatePlay::draw(const float dt) {
 
-	this->game->window.clear(sf::Color::Black);
-	this->game->window.draw(this->game->background);
+	this->game->window.clear(sf::Color::Red);
+	//this->game->window.draw(this->game->background);
 
 	return;
 }
 
-void gameStateMenu::update(const float dt) {
+void GameStatePlay::update(const float dt) {
 	return;
 }
 
-void gameStateMenu::handleInput() {
+void GameStatePlay::handleInput() {
 	sf::Event event;
 
 	while(this->game->window.pollEvent(event)) {
@@ -38,12 +38,12 @@ void gameStateMenu::handleInput() {
 	return;
 }
 
-GameStateMenu::GameStateMenu(Game* game) {
+GameStatePlay::GameStatePlay(Game* game) {
 	this->game = game;
-	sf::Vector2f pos = sf::Vector2f(this->window.getSize());
+	sf::Vector2f pos = sf::Vector2f(this->game->window.getSize());
 	//this->guiView.setSize(pos);
 	this->gameView.setSize(pos);
-	pos * = 0.5f;
+	pos *= 0.5f;
 	//this->guiView.setCenter(pos);
 	this->gameView.setCenter(pos);
 }

@@ -7,7 +7,7 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build (Debug or Release)" FORCE)
 endif()
 
-project(Battleship)
+project(B4ttle)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++11 -Wall")
 
@@ -21,12 +21,14 @@ configure_file(
 include_directories("${PROJECT_BINARY_DIR}")
 
 set(SOURCE_FILES 
-			src/*.cpp
-			
+			src/main.cpp
+			src/game.cpp
+			src/gameStatePlay.cpp
+			src/gameStateMenu.cpp
 )
 
 # Define sources and executable
-set(EXECUTABLE_NAME “Battleship”)
+set(EXECUTABLE_NAME “B4ttle”)
 add_executable(${EXECUTABLE_NAME} ${SOURCE_FILES})
 
 # Detect and add SFML

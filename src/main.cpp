@@ -6,7 +6,7 @@ int main()
 {
 	Game game;
 
-	game.pushState(new gameStateMenu(&game));
+	game.pushState(new GameStateMenu(&game));
 	game.gameLoop();
 
 	return 0;

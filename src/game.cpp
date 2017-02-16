@@ -7,7 +7,7 @@
 #include "../include/game.hpp"
 #include "../include/gameState.hpp"
 
-void Game::pushState(Gamestate* state) {
+void Game::pushState(GameState* state) {
 	this->states.push(state);
 
 	return;
