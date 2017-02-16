@@ -1,4 +1,4 @@
-+# CS372Proj1
+# CS372Proj1
 *Readme*
 
 Created by:
