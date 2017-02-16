@@ -7,7 +7,7 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build (Debug or Release)" FORCE)
 endif()
 
-project(B4ttle)
+project(CS372Proj1)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++11 -Wall")
 
@@ -24,11 +24,11 @@ set(SOURCE_FILES
 			src/main.cpp
 			src/game.cpp
 			src/gameStatePlay.cpp
-			src/gameStateMenu.cpp
+			src/gameStateMenu.cpp  
 )
 
 # Define sources and executable
-set(EXECUTABLE_NAME “B4ttle”)
+set(EXECUTABLE_NAME battleship)
 add_executable(${EXECUTABLE_NAME} ${SOURCE_FILES})
 
 # Detect and add SFML
@@ -48,7 +48,7 @@ install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
 
 # CPack packaging
 include(InstallRequiredSystemLibraries)
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/COPYING")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE")
 set(CPACK_PACKAGE_VERSION_MAJOR "${myproject_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${myproject_VERSION_MINOR}")
 include(CPack)
