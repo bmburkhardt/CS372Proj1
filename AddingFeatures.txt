@@ -1,0 +1,5 @@
+Add background images to new game states
+	1. Create new sf::Sprite in game.hpp
+	2. In Game default ctor in game.cpp. setTexture for the new background
+	3. In the new gameStateX.cpp file. Create draw for new background (see gameStatePlay.cpp for example)
+
