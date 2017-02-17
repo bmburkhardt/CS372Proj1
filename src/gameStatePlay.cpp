@@ -6,7 +6,7 @@
 void GameStatePlay::draw(const float dt) {
 
 	this->game->window.clear(sf::Color::Red);
-	//this->game->window.draw(this->game->background);
+	this->game->window.draw(this->game->gamebg);
 
 	return;
 }
