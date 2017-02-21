@@ -24,6 +24,9 @@ public:
 	// Tile variant allowing for different looking versions of the same tile
 	int tileVariant;
 
+	// Region IDs of the tile, tiles in the same region are connected. First is for transport.
+	unsigned int regions[1];
+
 	Tile() {}
 
 	Tile(const unsigned int tileSize, const unsigned int height, sf::Texture &texture,
@@ -31,6 +34,7 @@ public:
 	{
 		this->tileType = tileType;
 		this->tileVariant = 0;
+		this->regions[0] = 0;
 
 		this->sprite.setOrigin(sf::Vector2f(0.0f, tileSize*(height-1)));
 		this->sprite.setTexture(texture);

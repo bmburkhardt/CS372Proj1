@@ -28,6 +28,7 @@ set(SOURCE_FILES
 			src/textureManager.cpp 
 			src/tile.cpp
 			src/animationHandler.cpp
+			src/map.cpp
 )
 
 # Define sources and executable

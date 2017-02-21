@@ -28,6 +28,7 @@ public:
 	sf::Font font;
 	sf::Text headline;
 	sf::Text prompt;
+	//sf::Sprite watertile;
 
 	map<string, Tile> tileAtlas;
 

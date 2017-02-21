@@ -84,6 +84,9 @@ Game::Game() {
 	this->prompt.setColor(sf::Color::Black);
 	this->prompt.setPosition(310,230);
 
+	//this->watertile.setTexture(this->texmgr.getRef("water"));
+	//this->watertile.setPosition(400,400);
+
 
 
 	this->menubg.setTexture(this->texmgr.getRef("menubg"));
