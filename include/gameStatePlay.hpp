@@ -4,8 +4,6 @@
 #include <SFML/Graphics.hpp>
 
 #include "gameState.hpp"
-#include "map.hpp"
-#include "tile.hpp"
 
 enum class ActionState { NONE, PANNING };
 
@@ -25,8 +23,6 @@ private:
 
 	sf::View gameView;
 	//sf::View guiView
-
-	Map map;
 
 	sf::Vector2i panningAnchor;
 	float zoomLevel;

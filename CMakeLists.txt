@@ -25,10 +25,7 @@ set(SOURCE_FILES
 			src/game.cpp
 			src/gameStatePlay.cpp
 			src/gameStateMenu.cpp 
-			src/textureManager.cpp 
-			src/tile.cpp
-			src/animationHandler.cpp
-			src/map.cpp
+			src/textureManager.cpp
 )
 
 # Define sources and executable

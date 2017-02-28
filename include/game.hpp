@@ -9,7 +9,6 @@ using std::map;
 using std::string;
 
 #include "textureManager.hpp"
-#include "tile.hpp"
 
 class GameState;
 
@@ -17,7 +16,7 @@ class Game
 {
 
 public:
-	const static int tileSize = 8;
+	const static int tileSize = 32;
 
 	std::stack<GameState*> states;
 
@@ -28,9 +27,6 @@ public:
 	sf::Font font;
 	sf::Text headline;
 	sf::Text prompt;
-	//sf::Sprite watertile;
-
-	map<string, Tile> tileAtlas;
 
 	void pushState(GameState* state);
 	void popState();
@@ -44,7 +40,6 @@ public:
 
 private:
 	void loadTextures();
-	void loadTiles();
 
 };
 

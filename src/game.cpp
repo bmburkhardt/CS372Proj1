@@ -8,7 +8,6 @@
 #include "../include/game.hpp"
 #include "../include/gameState.hpp"
 #include "../include/textureManager.hpp"
-#include "../include/tile.hpp"
 
 void Game::pushState(GameState* state) {
 	this->states.push(state);
@@ -63,9 +62,9 @@ void Game::loadTextures() {
 	texmgr.loadTexture("ship",      "../res/tiles/ship32.jpg");
 }
 
+
 Game::Game() {
 	this->loadTextures();
-	this->loadTiles();
 
 	this->window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Battleship", sf::Style::Titlebar | sf::Style::Close);
 	this->window.setFramerateLimit(60);
@@ -84,13 +83,12 @@ Game::Game() {
 	this->prompt.setColor(sf::Color::Black);
 	this->prompt.setPosition(310,230);
 
-	//this->watertile.setTexture(this->texmgr.getRef("water"));
-	//this->watertile.setPosition(400,400);
-
-
-
+	
+	
 	this->menubg.setTexture(this->texmgr.getRef("menubg"));
-	this->gamebg.setTexture(this->texmgr.getRef("gamebg"));	
+	this->gamebg.setTexture(this->texmgr.getRef("gamebg"));
+
+	
 }
 
 Game::~Game() {
@@ -98,14 +96,8 @@ Game::~Game() {
 		popState();
 }
 
-void Game::loadTiles()
-{
-	Animation staticAnim(0, 0, 1.0f);
-	this->tileAtlas["water"] = Tile(this->tileSize, 1, texmgr.getRef("water"), { staticAnim }, TileType::WATER);
-	this->tileAtlas["ship"] = Tile(this->tileSize, 1, texmgr.getRef("ship"), { staticAnim }, TileType::SHIP);
-	this->tileAtlas["hit"] = Tile(this->tileSize, 1, texmgr.getRef("hit"), { staticAnim }, TileType::HIT);
-	this->tileAtlas["miss"] = Tile(this->tileSize, 1, texmgr.getRef("miss"), { staticAnim }, TileType::MISS);
-}
+
+
 
 
 
