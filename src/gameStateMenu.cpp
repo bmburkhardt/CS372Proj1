@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "../include/gameStateMenu.hpp"
-#include "../include/gameStatePlay.hpp"
+#include "../include/gameStateBattle.hpp"
 #include "../include/gameState.hpp"
 
 void GameStateMenu::draw(const float dt) {
@@ -61,7 +61,7 @@ GameStateMenu::GameStateMenu(Game* game) {
 }
 
 void GameStateMenu::loadgame() {
-	this->game->pushState(new GameStatePlay(this->game));
+	this->game->pushState(new GameStateBattle(this->game));
 	return;
 }
 

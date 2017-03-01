@@ -23,7 +23,7 @@ include_directories("${PROJECT_BINARY_DIR}")
 set(SOURCE_FILES 
 			src/main.cpp
 			src/game.cpp
-			src/gameStatePlay.cpp
+			src/gameStateBattle.cpp
 			src/gameStateMenu.cpp 
 			src/textureManager.cpp
       src/board.cpp
