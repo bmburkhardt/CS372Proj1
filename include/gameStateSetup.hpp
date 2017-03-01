@@ -1,5 +1,5 @@
-#ifndef GAMESTATEBATTLE_HPP
-#define GAMESTATEBATTLE_HPP
+#ifndef GAMESTATESETUP_HPP
+#define GAMESTATESETUP_HPP
 
 #include <SFML/Graphics.hpp>
 
@@ -24,4 +24,4 @@ private:
 
 
 
-#endif // GAMESTATEBATTLE_HPP
+#endif // GAMESTATESETUP_HPP
