@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include <SFML/Graphics.hpp>
 
 #include "../include/gameStateMenu.hpp"
@@ -25,6 +27,7 @@ void GameStateMenu::handleInput() {
 			// Close the window
 			case sf::Event::Closed: {
 				game->window.close();
+				std::cout << "Closed Game.\nGood Bye!" << std::endl;
 				break;
 			}
 			/*
@@ -32,10 +35,14 @@ void GameStateMenu::handleInput() {
 			*/
 
 			case sf::Event::KeyPressed: {
-				if(event.key.code == sf::Keyboard::Escape) 
+				if(event.key.code == sf::Keyboard::Escape) {
 					this->game->window.close();
-				else if(event.key.code == sf::Keyboard::Return) 
+					std::cout << "Closed Game.\nGood Bye!" << std::endl;
+				}
+				else if(event.key.code == sf::Keyboard::Return) {
 					this->loadgame();
+					std::cout << "Entered game mode." << std::endl;
+				}
 				break;
 			}
 			default: 

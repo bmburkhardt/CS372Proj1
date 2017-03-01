@@ -56,10 +56,11 @@ void Game::gameLoop() {
 void Game::loadTextures() {
 	texmgr.loadTexture("gamebg",    "../res/img/gamebg.jpg");
 	texmgr.loadTexture("menubg",    "../res/img/menubg.jpg");
-	texmgr.loadTexture("water",     "../res/tiles/water32.jpg");
-	texmgr.loadTexture("hit",       "../res/tiles/hit32.jpg");
-	texmgr.loadTexture("miss",      "../res/tiles/miss32.jpg");
-	texmgr.loadTexture("ship",      "../res/tiles/ship32.jpg");
+	// texmgr.loadTexture("water",     "../res/tiles/water32.jpg");
+	// texmgr.loadTexture("hit",       "../res/tiles/hit32.jpg");
+	// texmgr.loadTexture("miss",      "../res/tiles/miss32.jpg");
+	// texmgr.loadTexture("ship",      "../res/tiles/ship32.jpg");
+	std::cout << "Textures loaded" << std::endl;
 }
 
 
@@ -83,12 +84,14 @@ Game::Game() {
 	this->prompt.setColor(sf::Color::Black);
 	this->prompt.setPosition(310,230);
 
-	
-	
 	this->menubg.setTexture(this->texmgr.getRef("menubg"));
 	this->gamebg.setTexture(this->texmgr.getRef("gamebg"));
 
-	
+    if (!this->board.load("../res/tiles/alltiles.png", sf::Vector2u(32, 32), this->level, 25, 19))
+    	std::cout << "Board could not be loaded." << std::endl;
+	    
+	std::cout << "Game initialized" << std::endl;
+
 }
 
 Game::~Game() {

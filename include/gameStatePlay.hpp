@@ -5,8 +5,6 @@
 
 #include "gameState.hpp"
 
-enum class ActionState { NONE, PANNING };
-
 class GameStatePlay : public GameState
 {
 
@@ -19,16 +17,10 @@ public:
 	GameStatePlay(Game* game);
 
 private:
-	ActionState actionState;
 
 	sf::View gameView;
 	//sf::View guiView
-
-	sf::Vector2i panningAnchor;
-	float zoomLevel;
 };
-
-
 
 
 #endif // GAMESTATEPLAY_HPP
