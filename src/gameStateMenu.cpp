@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "../include/gameStateSetup.hpp"
 #include "../include/gameStateMenu.hpp"
 #include "../include/gameStateBattle.hpp"
 #include "../include/gameState.hpp"
@@ -41,7 +42,7 @@ void GameStateMenu::handleInput() {
 				}
 				else if(event.key.code == sf::Keyboard::Return) {
 					this->loadgame();
-					std::cout << "Entered game mode." << std::endl;
+					std::cout << "Entered game setup." << std::endl;
 				}
 				break;
 			}
@@ -61,7 +62,7 @@ GameStateMenu::GameStateMenu(Game* game) {
 }
 
 void GameStateMenu::loadgame() {
-	this->game->pushState(new GameStateBattle(this->game));
+	this->game->pushState(new GameStateSetup(this->game));
 	return;
 }
 
