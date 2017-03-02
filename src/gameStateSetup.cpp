@@ -19,14 +19,7 @@ void GameStateSetup::draw(const float dt) {
 void GameStateSetup::update(const float dt) {
 	return;
 }
-bool firstTilePlaced = false;
-bool secondTilePlaced = false;
-bool horizontal = false;
-bool vertical = true;
-bool secondOfSize3 = false;
-int placedIndex;
-int size = 1;
-int shipSize = 2;
+
 
 void GameStateSetup::handleInput() {
 	sf::Event event;
@@ -53,11 +46,6 @@ void GameStateSetup::handleInput() {
 					std::cout << "Entered battle mode." << std::endl;
 				}
             }
-			
-			/*
-				Possible add resize function
-			*/
-			
 			default: 
 				break;
 		}

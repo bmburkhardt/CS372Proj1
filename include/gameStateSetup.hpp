@@ -21,6 +21,14 @@ private:
 
 	sf::View gameView;
 	void loadgame();
+	bool firstTilePlaced = false;
+	bool secondTilePlaced = false;
+	bool horizontal = false;
+	bool vertical = true;
+	bool secondOfSize3 = false;
+	int placedIndex;
+	int size = 1;
+	int shipSize = 2;
 
 };
 

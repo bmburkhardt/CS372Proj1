@@ -27,7 +27,8 @@ set(SOURCE_FILES
 			src/gameStateMenu.cpp 
 			src/textureManager.cpp
 			src/gameStateSetup.cpp
-     			src/board.cpp
+     	src/board.cpp
+      src/gameStateAI.cpp
 )
 
 # Define sources and executable

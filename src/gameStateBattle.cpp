@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "../include/gameStateBattle.hpp"
+#include "../include/gameStateAI.hpp"
 #include "../include/gameState.hpp"
 #include "../include/board.hpp"
 
@@ -41,11 +42,14 @@ void GameStateBattle::handleInput() {
                         int index = ((event.mouseButton.x-1)/32 + ((event.mouseButton.y-1)/32)*25);
                         if(this->game->level[index] == 0) {      // if index == water
                             this->game->level[index] = 1;        // set index to miss
-                            std::cout << "Miss." << std::endl;
+                            std::cout << "Miss. -- Entering AI turn" << std::endl << std::endl;
+                            this->loadgame();
+
                             }      
-                        else if(this->game->level[index] == 5) { // else if index == ship
+                        else if(this->game->level[index] == 5) { // else if index == enemy ship
                             this->game->level[index] = 2;        // set index to hit
-                            std::cout << "Hit!" << std::endl;
+                            std::cout << "Hit! -- Entering AI turn" << std::endl << std::endl;
+                            this->loadgame();
                             }
                         if (!this->game->board.load("../res/tiles/alltiles.png", sf::Vector2u(32, 32), this->game->level, 25, 19))
             				std::cout << "Board could not be loaded." << std::endl;
@@ -53,15 +57,15 @@ void GameStateBattle::handleInput() {
                 }
                 break;
             }
-			
-			/*
-				Possible add resize function
-			*/
-			
 			default: 
 				break;
 		}
 	}
+	return;
+}
+
+void GameStateBattle::loadgame() {
+	this->game->pushState(new GameStateAI(this->game));
 	return;
 }
 
