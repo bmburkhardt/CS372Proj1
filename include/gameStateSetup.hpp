@@ -12,13 +12,16 @@ public:
 	virtual void draw(const float dt);
 	virtual void update(const float dt);
 	virtual void handleInput();
+	void placeShip(int n, int x, int y);
 
 	GameStateSetup(Game* game);
+
 
 private:
 
 	sf::View gameView;
 	void loadgame();
+
 };
 
 
