@@ -45,7 +45,7 @@ void GameStateSetup::handleInput() {
 					            	int x = event.mouseButton.x;
 					            	int y = event.mouseButton.y;
 					            	// Check to see if mouse click is within bounds of game board.
-					            	if((x > 32 && x < 352) && (y > 32 && y < 353)) {
+					            	if((x > 32 && x < 352) && (y > 32 && y < 352)) {
 					            	    // Finds the index of the vector that is being clicked.
 					            	    int index = ((event.mouseButton.x-1)/32 + ((event.mouseButton.y-1)/32)*25);
 					            	    if(this->game->level[index] == 0) {      // if index == water
@@ -62,16 +62,34 @@ void GameStateSetup::handleInput() {
 					    				firstTilePlaced = true;
 					    			}
 					    			if(firstTilePlaced == true && size < 2) {
+					    				// Check to see if mouse click is within bounds of game board.
+						            	if((x > 32 && x < 352) && (y > 32 && y < 352)) {
+						            	    // Finds the index of the vector that is being clicked.
+						            	    int index = ((event.mouseButton.x-1)/32 + ((event.mouseButton.y-1)/32)*25);
+						            	    if(gindex+1 == index || gindex-1 == index 
+						            	    	|| gindex+25 == index || gindex-25 == index) {
+							            	    if(this->game->level[index] == 0) {      // if index == water
+							            	        this->game->level[index] = 3;        // set index as ship
+							            	        std::cout << "Ship set." << std::endl;
+							            	        }      
+							            	    std::cout << "The left button was pressed" << std::endl;
+							            	    std::cout << "Mouse x: " << event.mouseButton.x << std::endl;
+							            	    std::cout << "Mouse y: " << event.mouseButton.y << std::endl;
+							            	    if (!this->game->board.load("../res/tiles/alltiles.png", sf::Vector2u(32, 32), this->game->level, 25, 19))
+							    					std::cout << "Board could not be loaded." << std::endl;
+							    				size++;
+					    						gindex = index;
+							    			}
+					    				}
+			    					}
+		    					}
+		    					// set Submarine 3
+		    					if(i == 1) {
 
-					    			}
-			    				}
+		    					}
 		    				}
-		    				// set Submarine 3
-		    				if(i == 1) {
-
-		    				}
-		    			}
-                    }
+                    	}
+                	}
                 }
                 break;
             }
