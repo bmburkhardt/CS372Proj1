@@ -73,10 +73,10 @@ void GameStateSetup::placeShip(int n, int x, int y) {
     	    int index = ((x-1)/32 + ((y-1)/32)*25);
     	    if(this->game->level[index] == 0) {      // if index == water
     	        this->game->level[index] = 3;        // set index as ship
+    	        std::cout << "Ship piece (" << size << "/" << shipSize << ") set." << std::endl;
     	        size++;
 				placedIndex = index;
-				firstTilePlaced = true;
-    	        std::cout << "Ship piece set." << std::endl;				            	        
+				firstTilePlaced = true;			            	        
     	        }
     	    if (!this->game->board.load("../res/tiles/alltiles.png", sf::Vector2u(32, 32), this->game->level, 25, 19))
 				std::cout << "Board could not be loaded." << std::endl;	
@@ -90,11 +90,11 @@ void GameStateSetup::placeShip(int n, int x, int y) {
     	    if(placedIndex+1 == index || placedIndex-1 == index) {
         	    if(this->game->level[index] == 0) {      // if index == water
         	        this->game->level[index] = 3;        // set index as ship
+        	        std::cout << "Ship piece (" << size << "/" << shipSize << ") set." << std::endl;
         	        size++;
 					placedIndex = index;
 					secondTilePlaced = true;
 					horizontal = true;
-        	        std::cout << "Ship piece set." << std::endl;
         	        }
         	    if (!this->game->board.load("../res/tiles/alltiles.png", sf::Vector2u(32, 32), this->game->level, 25, 19))
 					std::cout << "Board could not be loaded." << std::endl;
@@ -103,11 +103,11 @@ void GameStateSetup::placeShip(int n, int x, int y) {
 			else if(placedIndex+25 == index || placedIndex-25 == index) {
 				if(this->game->level[index] == 0) {      // if index == water
         	        this->game->level[index] = 3;        // set index as ship
+        	        std::cout << "Ship piece (" << size << "/" << shipSize << ") set." << std::endl;
         	        size++;
 					placedIndex = index;
 					secondTilePlaced = true;
 					vertical = true;
-        	        std::cout << "Ship piece set." << std::endl;
         	        }
         	    if (!this->game->board.load("../res/tiles/alltiles.png", sf::Vector2u(32, 32), this->game->level, 25, 19))
 					std::cout << "Board could not be loaded." << std::endl;	
@@ -122,9 +122,9 @@ void GameStateSetup::placeShip(int n, int x, int y) {
     	    if(placedIndex+1 == index || placedIndex-1 == index) {
         	    if(this->game->level[index] == 0) {      // if index == water
         	        this->game->level[index] = 3;        // set index as ship
+        	        std::cout << "Ship piece (" << size << "/" << shipSize << ") set." << std::endl;
         	        size++;
 					placedIndex = index;
-        	        std::cout << "Ship piece set." << std::endl;
         	        }
         	    if (!this->game->board.load("../res/tiles/alltiles.png", sf::Vector2u(32, 32), this->game->level, 25, 19))
 					std::cout << "Board could not be loaded." << std::endl;
@@ -140,9 +140,9 @@ void GameStateSetup::placeShip(int n, int x, int y) {
     	    if(placedIndex+25 == index || placedIndex-25 == index) {
         	    if(this->game->level[index] == 0) {      // if index == water
         	        this->game->level[index] = 3;        // set index as ship
+        	        std::cout << "Ship piece (" << size << "/" << shipSize << ") set." << std::endl;
         	        size++;
 					placedIndex = index;
-        	        std::cout << "Ship piece set." << std::endl;
         	        }
         	    if (!this->game->board.load("../res/tiles/alltiles.png", sf::Vector2u(32, 32), this->game->level, 25, 19))
 					std::cout << "Board could not be loaded." << std::endl;
@@ -151,7 +151,7 @@ void GameStateSetup::placeShip(int n, int x, int y) {
 		}
 	}
 	else if(size > n) {
-		std::cout << "Ship of size " << size-1 << " set." << std::endl;
+		std::cout << "Ship of size " << size-1 << " set." << std::endl << std::endl;
 		if(size-1 ==5)
 			std::cout << "All ships placed. Press enter to begin. Good Luck!" << std::endl;
 		if(!secondOfSize3 && size-1 ==3) {
@@ -164,6 +164,8 @@ void GameStateSetup::placeShip(int n, int x, int y) {
 		vertical = false;
 		horizontal = false;
 		shipSize++;
+		if(shipSize < 6)
+			std::cout << "Please place ship of size " << shipSize << std::endl;
 	}
 }
 
