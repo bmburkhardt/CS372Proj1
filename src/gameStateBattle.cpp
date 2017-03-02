@@ -43,13 +43,10 @@ void GameStateBattle::handleInput() {
                             this->game->level[index] = 1;        // set index to miss
                             std::cout << "Miss." << std::endl;
                             }      
-                        else if(this->game->level[index] == 3) { // else if index == ship
+                        else if(this->game->level[index] == 5) { // else if index == ship
                             this->game->level[index] = 2;        // set index to hit
                             std::cout << "Hit!" << std::endl;
-                            }      
-                        std::cout << "the left button was pressed" << std::endl;
-                        std::cout << "mouse x: " << event.mouseButton.x << std::endl;
-                        std::cout << "mouse y: " << event.mouseButton.y << std::endl;
+                            }
                         if (!this->game->board.load("../res/tiles/alltiles.png", sf::Vector2u(32, 32), this->game->level, 25, 19))
             				std::cout << "Board could not be loaded." << std::endl;
                     }
