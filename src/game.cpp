@@ -66,7 +66,7 @@ void Game::loadTextures() {
 
 Game::Game() {
 	this->loadTextures();
-
+	sf::Color custom(0x5B0000ff);
 	this->window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Battleship", sf::Style::Titlebar | sf::Style::Close);
 	this->window.setFramerateLimit(60);
 
@@ -75,13 +75,13 @@ Game::Game() {
 	this->headline.setFont(font);
 	this->headline.setString("[Battleship]");
 	this->headline.setCharacterSize(72);
-	this->headline.setColor(sf::Color::Black);
+	this->headline.setColor(custom);
 	this->headline.setPosition(170,100);
 
 	this->prompt.setFont(font);
 	this->prompt.setString("[Press] [Enter]");
 	this->prompt.setCharacterSize(24);
-	this->prompt.setColor(sf::Color::Black);
+	this->prompt.setColor(custom);
 	this->prompt.setPosition(310,230);
 
 	this->menubg.setTexture(this->texmgr.getRef("menubg"));

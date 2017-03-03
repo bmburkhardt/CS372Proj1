@@ -27,6 +27,7 @@ private:
 	bool vertical = true;
 	bool secondOfSize3 = false;
 	int placedIndex;
+	int originalIndex;
 	int size = 1;
 	int shipSize = 2;
 
