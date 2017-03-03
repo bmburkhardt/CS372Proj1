@@ -94,9 +94,6 @@ void GameStateBattle::AITurn() {
 			std::cout << "AI Hit" << std::endl;
 			shotSuccess = true;
 		}
-		/*else if(this->game->level[shootAt] == 1 || this->game->level[shootAt] == 2) {
-
-		}*/
 	}
 }
 

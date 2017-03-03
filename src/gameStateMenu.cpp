@@ -31,9 +31,6 @@ void GameStateMenu::handleInput() {
 				std::cout << "Closed Game.\nGood Bye!" << std::endl;
 				break;
 			}
-			/*
-				Possible add resize function
-			*/
 
 			case sf::Event::KeyPressed: {
 				if(event.key.code == sf::Keyboard::Escape) {
