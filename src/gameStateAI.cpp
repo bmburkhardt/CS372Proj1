@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "../include/gameStateAI.hpp"
-#include "../include/GameStateBattle.hpp"
+#include "../include/gameStateBattle.hpp"
 #include "../include/gameState.hpp"
 #include "../include/board.hpp"
 
