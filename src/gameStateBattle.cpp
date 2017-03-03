@@ -47,7 +47,7 @@ void GameStateBattle::handleInput() {
                         // Finds the index of the vector that is being clicked.
                         int index = ((event.mouseButton.x-1)/32 + ((event.mouseButton.y-1)/32)*25);
                         if(this->game->level[index] == 0) {      // if index == water
-                            this->game->level[index] = 1;        // set index to miss
+                            this->game->level[index] = 6;        // set index to miss
                             playerShots++;
                             std::cout << "Miss. -- Entering AI turn" << std::endl << std::endl;
                             this->AITurn();
@@ -114,7 +114,7 @@ GameStateBattle::GameStateBattle(Game* game) {
 }
 
 void GameStateBattle::playerHasWon(int ph, int ah) {
-	if(ph == 1) {
+	if(ph == 17) {
 		this->game->playerWin = true;
 		std::cout << "Player won!" << std::endl;
 		this->loadgame();

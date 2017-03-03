@@ -103,7 +103,6 @@ void GameStateDone::loadgame() {
     if (!this->game->board.load("../res/tiles/alltiles.png", sf::Vector2u(32, 32), this->game->level, 25, 19))
     	std::cout << "Board could not be loaded." << std::endl;
     this->game->pushState(new GameStateMenu(this->game));
-	//this->game->pushState(new GameStateSetup(this->game));
 	return;
 }
 
