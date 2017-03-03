@@ -1,5 +1,6 @@
 #include <iostream>
 #include <random>
+#include <unistd.h>
 
 #include <SFML/Graphics.hpp>
 
@@ -49,7 +50,7 @@ void GameStateBattle::handleInput() {
                         if(this->game->level[index] == 0) {      // if index == water
                             this->game->level[index] = 6;        // set index to miss
                             playerShots++;
-                            std::cout << "Miss. -- Entering AI turn" << std::endl << std::endl;
+                            std::cout << "You Missed - Entering AI turn"  << std::endl;
                             this->AITurn();
                             }      
                         else if(this->game->level[index] == 5) { // else if index == enemy ship
@@ -57,7 +58,7 @@ void GameStateBattle::handleInput() {
                             playerShots++;
                             playerHits++;
                             playerHasWon(playerHits, AIHits);
-                            std::cout << "Hit! -- Entering AI turn" << std::endl << std::endl;
+                            std::cout << "You Hit! - Entering AI turn"  << std::endl;
                             this->AITurn();
                             }
                         if (!this->game->board.load("../res/tiles/alltiles.png", sf::Vector2u(32, 32), this->game->level, 25, 19))
@@ -83,7 +84,7 @@ void GameStateBattle::AITurn() {
 		if(this->game->level[shootAt] == 0) {
 			this->game->level[shootAt] = 1;
 			AIShots++;
-			std::cout << "AI Missed." << std::endl;
+			std::cout << "AI Missed." << std::endl << std::endl;
 			shotSuccess = true;
 		}
 		else if(this->game->level[shootAt] == 3) {
@@ -91,7 +92,7 @@ void GameStateBattle::AITurn() {
 			AIShots++;
 			AIHits++;
 			playerHasWon(playerHits, AIHits);
-			std::cout << "AI Hit" << std::endl;
+			std::cout << "AI Hit" << std::endl << std::endl;
 			shotSuccess = true;
 		}
 	}

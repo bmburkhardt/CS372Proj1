@@ -43,7 +43,7 @@ void GameStateSetup::handleInput() {
             case sf::Event::KeyPressed: {
             	if(event.key.code == sf::Keyboard::Return) {
 					this->loadgame();
-					std::cout << "Entered battle mode." << std::endl;
+					std::cout << "Entered battle mode." << std::endl << std::endl;
 				}
 				if(event.key.code == sf::Keyboard::Escape) {
 					this->game->window.close();
