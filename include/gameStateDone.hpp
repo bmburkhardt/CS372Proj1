@@ -1,11 +1,11 @@
-#ifndef GAMESTATEAI_HPP
-#define GAMESTATEAI_HPP
+#ifndef GAMESTATEDONE_HPP
+#define GAMESTATEDONE_HPP
 
 #include <SFML/Graphics.hpp>
 
 #include "gameState.hpp"
 
-class GameStateAI : public GameState
+class GameStateDone : public GameState
 {
 
 public:
@@ -13,8 +13,9 @@ public:
 	virtual void draw(const float dt);
 	virtual void update(const float dt);
 	virtual void handleInput();
+	
 
-	GameStateAI(Game* game);
+	GameStateDone(Game* game);
 
 private:
 
@@ -25,4 +26,4 @@ private:
 
 
 
-#endif // GAMESTATEAI_HPP
+#endif // GAMESTATEDONE_HPP

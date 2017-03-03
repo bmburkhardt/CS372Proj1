@@ -45,6 +45,10 @@ void GameStateSetup::handleInput() {
 					this->loadgame();
 					std::cout << "Entered battle mode." << std::endl;
 				}
+				if(event.key.code == sf::Keyboard::Escape) {
+					this->game->window.close();
+					std::cout << "Closed Game.\nGood Bye!" << std::endl;
+				}
             }
 			default: 
 				break;
@@ -59,6 +63,7 @@ void GameStateSetup::placeShip(int n, int x, int y) {
     	if((x > 32 && x < 352) && (y > 32 && y < 352)) {
     	    // Finds the index of the vector that is being clicked.
     	    int index = ((x-1)/32 + ((y-1)/32)*25);
+    	    originalIndex = index;
     	    if(this->game->level[index] == 0) {      // if index == water
     	        this->game->level[index] = 3;        // set index as ship
     	        std::cout << "Ship piece (" << size << "/" << shipSize << ") set." << std::endl;
@@ -107,9 +112,13 @@ void GameStateSetup::placeShip(int n, int x, int y) {
     	if((x > 32 && x < 352) && (y > 32 && y < 352)) {
     	    // Finds the index of the vector that is being clicked.
     	    int index = ((x-1)/32 + ((y-1)/32)*25);
-    	    if(placedIndex+1 == index || placedIndex-1 == index) {
+    	    if((placedIndex+1 == index || placedIndex-1 == index) /*&& originalIndex + size > index+1) */||
+    	    	(placedIndex+1 == index || placedIndex-1 == index) /*&& originalIndex - size < index+1*/)  
+    	    	/*(placedIndex-size+1 == index && placedIndex+size-1 != index) ||
+    	    	(placedIndex-size+1 != index && placedIndex+size-1 == index))*/ {
         	    if(this->game->level[index] == 0) {      // if index == water
         	        this->game->level[index] = 3;        // set index as ship
+        	        std::cout << "horizontal index " << index << std::endl;
         	        std::cout << "Ship piece (" << size << "/" << shipSize << ") set." << std::endl;
         	        size++;
 					placedIndex = index;
@@ -125,7 +134,8 @@ void GameStateSetup::placeShip(int n, int x, int y) {
     	if((x > 32 && x < 352) && (y > 32 && y < 352)) {
     	    // Finds the index of the vector that is being clicked.
     	    int index = ((x-1)/32 + ((y-1)/32)*25);
-    	    if(placedIndex+25 == index || placedIndex-25 == index) {
+    	    if(placedIndex+25 == index || placedIndex-25 == index || 
+    	    	placedIndex+25-size+1 == index-size || placedIndex-25+size == index+size-1) {
         	    if(this->game->level[index] == 0) {      // if index == water
         	        this->game->level[index] = 3;        // set index as ship
         	        std::cout << "Ship piece (" << size << "/" << shipSize << ") set." << std::endl;
@@ -147,6 +157,7 @@ void GameStateSetup::placeShip(int n, int x, int y) {
 			secondOfSize3 = true;
 		}
 		size = 1;
+
 		firstTilePlaced = false;
 		secondTilePlaced = false;
 		vertical = false;

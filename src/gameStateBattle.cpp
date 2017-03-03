@@ -1,9 +1,10 @@
 #include <iostream>
+#include <random>
 
 #include <SFML/Graphics.hpp>
 
 #include "../include/gameStateBattle.hpp"
-#include "../include/gameStateAI.hpp"
+#include "../include/gameStateDone.hpp"
 #include "../include/gameState.hpp"
 #include "../include/board.hpp"
 
@@ -31,7 +32,12 @@ void GameStateBattle::handleInput() {
 				std::cout << "Closed Game.\nGood Bye!" << std::endl;
 				break;
 			}
-
+			case sf::Event::KeyPressed: {
+				if(event.key.code == sf::Keyboard::Escape) {
+					this->game->window.close();
+					std::cout << "Closed Game.\nGood Bye!" << std::endl;
+				}
+			}
 			case sf::Event::MouseButtonPressed: {
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     int x = event.mouseButton.x;
@@ -42,18 +48,22 @@ void GameStateBattle::handleInput() {
                         int index = ((event.mouseButton.x-1)/32 + ((event.mouseButton.y-1)/32)*25);
                         if(this->game->level[index] == 0) {      // if index == water
                             this->game->level[index] = 1;        // set index to miss
+                            playerShots++;
                             std::cout << "Miss. -- Entering AI turn" << std::endl << std::endl;
-                            this->loadgame();
-
+                            this->AITurn();
                             }      
                         else if(this->game->level[index] == 5) { // else if index == enemy ship
                             this->game->level[index] = 2;        // set index to hit
+                            playerShots++;
+                            playerHits++;
+                            playerHasWon(playerHits, AIHits);
                             std::cout << "Hit! -- Entering AI turn" << std::endl << std::endl;
-                            this->loadgame();
+                            this->AITurn();
                             }
                         if (!this->game->board.load("../res/tiles/alltiles.png", sf::Vector2u(32, 32), this->game->level, 25, 19))
             				std::cout << "Board could not be loaded." << std::endl;
                     }
+
                 }
                 break;
             }
@@ -64,8 +74,34 @@ void GameStateBattle::handleInput() {
 	return;
 }
 
+
+void GameStateBattle::AITurn() {
+	bool shotSuccess = false;
+
+	while(!shotSuccess) {
+		int shootAt = (25+(rand()%12)) + (25*(rand()%10));
+		if(this->game->level[shootAt] == 0) {
+			this->game->level[shootAt] = 1;
+			AIShots++;
+			std::cout << "AI Missed." << std::endl;
+			shotSuccess = true;
+		}
+		else if(this->game->level[shootAt] == 3) {
+			this->game->level[shootAt] = 2;
+			AIShots++;
+			AIHits++;
+			playerHasWon(playerHits, AIHits);
+			std::cout << "AI Hit" << std::endl;
+			shotSuccess = true;
+		}
+		/*else if(this->game->level[shootAt] == 1 || this->game->level[shootAt] == 2) {
+
+		}*/
+	}
+}
+
 void GameStateBattle::loadgame() {
-	this->game->pushState(new GameStateAI(this->game));
+	this->game->pushState(new GameStateDone(this->game));
 	return;
 }
 
@@ -77,8 +113,18 @@ GameStateBattle::GameStateBattle(Game* game) {
 	this->gameView.setCenter(pos);
 }
 
-
-
+void GameStateBattle::playerHasWon(int ph, int ah) {
+	if(ph == 1) {
+		this->game->playerWin = true;
+		std::cout << "Player won!" << std::endl;
+		this->loadgame();
+	}
+	else if(ah == 17) {
+		this->game->playerWin = false;
+		std::cout << "AI won!" << std::endl;
+		this->loadgame();
+	}
+}
 
 
 
