@@ -115,7 +115,7 @@ void GameStateBattle::playerHasWon(int ph, int ah) {
 		std::cout << "Player won!" << std::endl;
 		this->loadgame();
 	}
-	else if(ah == 1) {
+	else if(ah == 17) {
 		this->game->playerWin = false;
 		std::cout << "AI won!" << std::endl;
 		this->loadgame();
