@@ -17,12 +17,18 @@ void GameStateDone::draw(const float dt){
 	this->game->window.clear(sf::Color::Red);
 	this->game->window.draw(this->game->gamebg);
 	this->game->window.draw(this->game->board);
+	
 	if(this->game->playerWin) {
 		this->game->result.setFont(this->game->font);
 		this->game->result.setString("[YOU] [WON]");
 		this->game->result.setCharacterSize(144);
 		this->game->result.setColor(custom);
 		this->game->result.setPosition(28,380);
+		this->game->quitPrompt.setFont(this->game->font);
+		this->game->quitPrompt.setString("[PRESS_ENTER_TO_PLAY_AGAIN_OR_ESCAPE_TO_QUIT]");
+		this->game->quitPrompt.setCharacterSize(28);
+		this->game->quitPrompt.setColor(custom);
+		this->game->quitPrompt.setPosition(20,550);
 	}
 	else {
 		this->game->result.setFont(this->game->font);
@@ -30,8 +36,14 @@ void GameStateDone::draw(const float dt){
 		this->game->result.setCharacterSize(144);
 		this->game->result.setColor(custom);
 		this->game->result.setPosition(14,380);
+		this->game->quitPrompt.setFont(this->game->font);
+		this->game->quitPrompt.setString("[PRESS_ENTER_TO_PLAY_AGAIN_OR_ESCAPE_TO_QUIT]");
+		this->game->quitPrompt.setCharacterSize(28);
+		this->game->quitPrompt.setColor(custom);
+		this->game->quitPrompt.setPosition(17,550);
 	}
 	this->game->window.draw(this->game->result);
+	this->game->window.draw(this->game->quitPrompt);
 	this->game->window.setView(this->gameView);
 	return;
 }

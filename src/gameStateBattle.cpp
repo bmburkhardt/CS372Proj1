@@ -1,6 +1,6 @@
 #include <iostream>
 #include <random>
-#include <unistd.h>
+#include <time.h>
 
 #include <SFML/Graphics.hpp>
 
@@ -51,8 +51,7 @@ void GameStateBattle::handleInput() {
                             this->game->level[index] = 6;        // set index to miss
                             playerShots++;
                             std::cout << "You Missed - Entering AI turn"  << std::endl;
-                            this->AITurn();
-                            }      
+                            this->AITurn();                            }      
                         else if(this->game->level[index] == 5) { // else if index == enemy ship
                             this->game->level[index] = 2;        // set index to hit
                             playerShots++;
@@ -78,7 +77,6 @@ void GameStateBattle::handleInput() {
 
 void GameStateBattle::AITurn() {
 	bool shotSuccess = false;
-
 	while(!shotSuccess) {
 		int shootAt = (25+(rand()%12)) + (25*(rand()%10));
 		if(this->game->level[shootAt] == 0) {
@@ -117,7 +115,7 @@ void GameStateBattle::playerHasWon(int ph, int ah) {
 		std::cout << "Player won!" << std::endl;
 		this->loadgame();
 	}
-	else if(ah == 17) {
+	else if(ah == 1) {
 		this->game->playerWin = false;
 		std::cout << "AI won!" << std::endl;
 		this->loadgame();

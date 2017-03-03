@@ -34,6 +34,7 @@ public:
 	sf::Text headline;
 	sf::Text prompt;
 	sf::Text result;
+	sf::Text quitPrompt;
 
 	bool playerWin = false;
 
